@@ -13,11 +13,9 @@
 .scrolly-portfolio .btn-primary:hover { background:transparent; border-color:#8a7453; }
 .scrolly-portfolio .hero-film { position:sticky; top:12svh; width:100%; align-self:start; }
 .keyed-video { position:relative; height:68svh; max-height:700px; width:100%; }
-.keyed-video canvas,.keyed-video .film-fallback { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.keyed-video canvas { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
 .keyed-video canvas { opacity:0; transition:opacity .35s; }
 .keyed-video.is-ready canvas { opacity:1; }
-.keyed-video.is-ready .film-fallback { opacity:0; }
-.keyed-video .film-fallback { mix-blend-mode:multiply; mask-image:radial-gradient(ellipse,#000 56%,transparent 76%); }
 .hero-film figcaption { text-align:center; width:100%; }
 .film-note { display:block; margin-bottom:12px; }
 .film-controls { display:flex; justify-content:center; gap:20px; }
@@ -94,3 +92,4 @@
 .point-name canvas { position:absolute; inset:0; width:100%; height:100%; pointer-events:auto; }
 .point-name.is-ready>span { opacity:0; }
 @media(max-width:650px){.scrolly-portfolio .hero-section{min-height:0;gap:28px}.scrolly-portfolio .keyed-video{height:52svh;min-height:320px}.scrolly-portfolio .chapter .editorial-copy{min-height:0;padding-top:0}.scrolly-portfolio .story-bridge p{font-size:3.8rem}}
+.film-error{position:absolute;inset:0;display:grid;place-items:center;font:12px 'IBM Plex Mono',monospace;color:#8c765c;text-align:center}

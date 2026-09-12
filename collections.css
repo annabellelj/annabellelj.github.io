@@ -36,3 +36,11 @@
 .about .about-lead{font-size:21px;margin:0 0 18px}
 .about .about-intro p:not(.eyebrow):not(.about-lead){font-size:14px;line-height:1.85}
 @media(max-width:750px){.about .about-intro{grid-template-columns:1fr;gap:30px;padding:30px 0 40px}.about .profile-photo{max-width:290px;justify-self:start;transform:none}.about .profile-photo img{border-radius:18px}.about .about-intro h1{font-size:46px}}
+
+/* A softly framed print, with decorative tape kept outside the photograph. */
+.about .profile-photo{position:relative;padding:10px 10px 20px;background:#fffdf9;border:1px solid #dfd1bf;border-radius:14px;box-shadow:0 9px 25px #76573712;isolation:isolate}
+.about .profile-photo img{border-radius:6px;box-shadow:none;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+.about .profile-photo::before,.about .profile-photo::after{content:'';position:absolute;z-index:1;pointer-events:none;width:72px;height:22px;background:repeating-linear-gradient(90deg,#cfb18c70 0 2px,#dbc4a57a 2px 5px);border:1px solid #ccb18d35;box-shadow:0 1px 2px #7657370a}
+.about .profile-photo::before{top:-13px;left:23px;transform:rotate(-9deg)}
+.about .profile-photo::after{bottom:-10px;right:22px;transform:rotate(-8deg);width:58px;height:18px}
+@media(max-width:750px){.about .profile-photo{padding:8px 8px 16px;border-radius:12px}.about .profile-photo img{border-radius:5px}}

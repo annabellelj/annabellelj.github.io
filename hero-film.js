@@ -6,7 +6,7 @@
  const video=document.createElement('video');video.src='media/video/annabelle-hello-silent.mp4';video.muted=true;video.defaultMuted=true;video.loop=false;video.playsInline=true;video.preload='auto';video.setAttribute('playsinline','');video.setAttribute('muted','');
  // The source stays off the visual surface; the canvas is the only video output.
  let gl,program,texture,buffer,frameId=null,usingVideoFrames='requestVideoFrameCallback' in video,visible=true,finished=false,failed=false;
- function fail(){failed=true;cancelFrame();video.pause();stage.classList.remove('is-ready');}
+ function fail(){failed=true;cancelFrame();video.pause();stage.classList.remove('is-ready');if(!stage.querySelector('.film-error')){const note=document.createElement('span');note.className='film-error';note.setAttribute('role','status');note.textContent='The hello video couldn’t load.';stage.append(note);}}
  function compile(type,source){const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(shader));return shader;}
  try{
   gl=canvas.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false,preserveDrawingBuffer:true});if(!gl)throw Error('WebGL unavailable');
