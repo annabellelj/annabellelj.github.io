@@ -1,80 +1,130 @@
 const year = document.getElementById("year");
-
 if (year) {
   year.textContent = String(new Date().getFullYear());
 }
 
-const tabs = Array.from(document.querySelectorAll(".project-tab"));
-const cards = Array.from(document.querySelectorAll(".project-card"));
-const projectsGrid = document.getElementById("projects-grid");
-const RANDOM_COUNT = 4;
-const FILTERS = new Set(["all", "cs", "journalism"]);
+/* Reveal sections as they scroll into view. */
+(function () {
+  const items = Array.from(document.querySelectorAll(".reveal"));
+  if (items.length === 0) return;
 
-function shuffle(list) {
-  const copy = [...list];
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function showCards(filter) {
-  if (!projectsGrid || cards.length === 0) {
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("is-visible"));
     return;
   }
 
-  cards.forEach((card) => {
-    card.classList.remove("is-hidden");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  items.forEach((item) => observer.observe(item));
+})();
+
+/* Highlight the nav link for whichever section is in view. */
+(function () {
+  const links = Array.from(document.querySelectorAll(".nav-links a[data-spy]"));
+  if (links.length === 0 || !("IntersectionObserver" in window)) return;
+
+  const byId = new Map();
+  const sections = [];
+
+  links.forEach((link) => {
+    const section = document.getElementById(link.dataset.spy);
+    if (!section) return;
+    byId.set(section.id, link);
+    sections.push(section);
   });
 
-  if (filter === "all") {
-    const randomized = shuffle(cards);
-    const visible = new Set(randomized.slice(0, Math.min(RANDOM_COUNT, cards.length)));
+  if (sections.length === 0) return;
 
-    randomized.forEach((card) => {
-      projectsGrid.append(card);
-      if (!visible.has(card)) {
-        card.classList.add("is-hidden");
-      }
+  const visible = new Set();
+
+  function paint() {
+    let active = null;
+    sections.forEach((section) => {
+      if (visible.has(section.id)) active = active || section.id;
     });
-    return;
-  }
 
-  const filtered = cards.filter((card) => card.dataset.category === filter);
-  filtered.forEach((card) => {
-    projectsGrid.append(card);
-  });
-
-  cards.forEach((card) => {
-    if (card.dataset.category !== filter) {
-      card.classList.add("is-hidden");
-    }
-  });
-}
-
-if (tabs.length > 0) {
-  const params = new URLSearchParams(window.location.search);
-  const initialFilter = params.get("filter");
-  const activeFilter = FILTERS.has(initialFilter || "") ? initialFilter : "all";
-
-  tabs.forEach((tab) => {
-    const tabFilter = tab.dataset.filter || "all";
-    tab.classList.toggle("active", tabFilter === activeFilter);
-    tab.addEventListener("click", () => {
-      tabs.forEach((item) => item.classList.remove("active"));
-      tab.classList.add("active");
-      showCards(tabFilter);
-
-      const next = new URL(window.location.href);
-      if (tabFilter === "all") {
-        next.searchParams.delete("filter");
+    links.forEach((link) => {
+      const on = link.dataset.spy === active;
+      link.classList.toggle("is-active", on);
+      if (on) {
+        link.setAttribute("aria-current", "true");
       } else {
-        next.searchParams.set("filter", tabFilter);
+        link.removeAttribute("aria-current");
       }
-      history.replaceState(null, "", `${next.pathname}${next.search}${next.hash}`);
     });
-  });
+  }
 
-  showCards(activeFilter);
-}
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          visible.add(entry.target.id);
+        } else {
+          visible.delete(entry.target.id);
+        }
+      });
+      paint();
+    },
+    { threshold: 0, rootMargin: "-45% 0px -45% 0px" }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+})();
+
+/* Thin progress bar across the top of the page. */
+(function () {
+  const bar = document.getElementById("scroll-bar");
+  if (!bar) return;
+
+  let ticking = false;
+
+  function update() {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    bar.style.transform = "scaleX(" + ratio + ")";
+    ticking = false;
+  }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("resize", update);
+  update();
+})();
+
+/* Keep the split panes in sync: hovering one dims the other, and a keyboard
+   focus gets the same treatment so the two tracks stay legible. */
+(function () {
+  const split = document.querySelector(".split");
+  if (!split) return;
+
+  const panes = Array.from(split.querySelectorAll(".split-pane"));
+
+  panes.forEach((pane) => {
+    ["mouseenter", "focus"].forEach((evt) =>
+      pane.addEventListener(evt, () => split.classList.add("is-engaged"))
+    );
+    ["mouseleave", "blur"].forEach((evt) =>
+      pane.addEventListener(evt, () => split.classList.remove("is-engaged"))
+    );
+  });
+})();
