@@ -3,10 +3,21 @@
   --surface: rgba(255, 255, 255, 0.88);
   --text: #1f2937;
   --muted: #4b5563;
-  --accent: #ebb3a9;
-  --accent-2: #ebb3a9;
-  --accent-soft: #fdf3f1;
-  --border: #d1d5db;
+
+  /* baby blue */
+  --blue: #a5d8f3;
+  --blue-soft: #e9f4fc;
+  --blue-deep: #3c7da6;
+
+  /* pink */
+  --pink: #f9bcd0;
+  --pink-soft: #fdeef4;
+  --pink-deep: #c4587e;
+
+  --accent: var(--blue);
+  --accent-2: var(--blue-deep);
+  --accent-soft: var(--blue-soft);
+  --border: #d6dde5;
   --shadow: 0 10px 22px rgba(31, 41, 55, 0.08);
   --radius: 10px;
 }
@@ -488,9 +499,13 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
   .profile-image {
     justify-self: start;
-    max-width: 300px;
+    max-width: 260px;
   }
 
   .hero {
@@ -541,15 +556,16 @@ a.button {
   font-weight: 600;
   text-decoration: none;
   padding: 12px 22px;
-  background-color: #fee1ed;
+  background-color: var(--pink);
   border-radius: 12px;
-  color: #6b5b73;
+  color: #6d3b51;
   transition: background-color 0.3s, transform 0.2s;
   margin-top: 10px;
 }
 
 a.button:hover {
-  background-color: #fcd6c3;
+  background-color: var(--blue);
+  color: #123a50;
   transform: scale(1.05);
   text-decoration: none;
 }
@@ -559,10 +575,10 @@ a.button:hover {
    ========================================================================== */
 
 :root {
-  --cs: #5b5470;
-  --cs-soft: #f2f0f8;
-  --jr: #b9614f;
-  --jr-soft: #fdf1ee;
+  --cs: var(--blue-deep);
+  --cs-soft: var(--blue-soft);
+  --jr: var(--pink-deep);
+  --jr-soft: var(--pink-soft);
   --nav-h: 68px;
 }
 
@@ -636,13 +652,125 @@ header[id] {
 
 /* ---- 3D hero ---- */
 
-.hero {
+/* The 3D visual is pinned for the whole scrollytelling run; the step
+   cards scroll over it. */
+.scrolly {
   position: relative;
-  min-height: clamp(540px, 82vh, 880px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+}
+
+.scrolly-visual {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  z-index: 0;
   overflow: hidden;
+}
+
+.scrolly-steps {
+  position: relative;
+  z-index: 1;
+  margin-top: -100vh;
+  margin-top: -100svh;
+}
+
+.step {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+  /* drags fall through to the canvas everywhere except on a card */
+  pointer-events: none;
+}
+
+.step-inner {
+  display: flex;
+  width: min(1240px, 94vw);
+  margin: 0 auto;
+}
+
+.step-inner > * {
+  pointer-events: auto;
+}
+
+.step-journalism .step-inner {
+  justify-content: flex-end;
+}
+
+.step-card {
+  max-width: 470px;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.7rem 1.8rem 1.8rem;
+  box-shadow: 0 14px 30px rgba(31, 41, 55, 0.1);
+  opacity: 0.28;
+  transform: translateY(26px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.step.is-current .step-card {
+  opacity: 1;
+  transform: none;
+}
+
+.step-index {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin: 0 0 0.3rem;
+}
+
+.step-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.step-cs .step-card h2 {
+  color: var(--cs);
+}
+
+.step-journalism .step-card h2 {
+  color: var(--jr);
+}
+
+.step-card p {
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+}
+
+.step-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.step-link::after {
+  content: "\2193";
+  display: inline-block;
+  margin-left: 0.4em;
+  transition: transform 0.3s ease;
+}
+
+.step-link:hover {
+  text-decoration: none;
+}
+
+.step-link:hover::after {
+  transform: translateY(4px);
+}
+
+.step-cs .step-link {
+  color: var(--cs);
+}
+
+.step-journalism .step-link {
+  color: var(--jr);
 }
 
 #hero-canvas {
@@ -650,7 +778,6 @@ header[id] {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   cursor: grab;
   touch-action: none;
 }
@@ -663,16 +790,6 @@ header[id] {
   display: none;
 }
 
-/* Let drags reach the canvas everywhere except over actual content. */
-.hero .hero-content {
-  pointer-events: none;
-}
-
-.hero .hero-copy,
-.hero .profile-image {
-  pointer-events: auto;
-}
-
 .hero-copy {
   background: linear-gradient(
     100deg,
@@ -683,6 +800,26 @@ header[id] {
   border-radius: 18px;
   padding: 1.1rem 1.3rem 1.3rem;
   margin-left: -1.3rem;
+}
+
+.step-hero {
+  position: relative;
+}
+
+.step-hero .hero-copy {
+  max-width: 560px;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.about-layout .profile-image {
+  max-width: 260px;
+  justify-self: start;
 }
 
 .scroll-cue {
@@ -698,6 +835,15 @@ header[id] {
   display: flex;
   justify-content: center;
   padding-top: 7px;
+}
+
+.step-hero:not(.is-current) .scroll-cue {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-cue {
+  transition: opacity 0.4s ease, border-color 0.3s ease;
 }
 
 .scroll-cue:hover {
@@ -731,118 +877,6 @@ header[id] {
   color: var(--muted);
   max-width: 60ch;
   margin: 0.6rem 0 0;
-}
-
-/* ---- split tracks ---- */
-
-.split {
-  display: flex;
-  gap: 0.9rem;
-  margin-top: 1.6rem;
-  min-height: 340px;
-}
-
-.split-pane {
-  flex: 1 1 0;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 0.45rem;
-  padding: 1.7rem;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  color: var(--text);
-  text-decoration: none;
-  overflow: hidden;
-  transition: flex-grow 0.55s cubic-bezier(0.2, 0.7, 0.3, 1),
-    opacity 0.35s ease, box-shadow 0.35s ease;
-}
-
-.split-pane::before {
-  content: attr(data-watermark);
-  position: absolute;
-  top: -0.35em;
-  right: 0.1em;
-  font-size: 9rem;
-  font-weight: 700;
-  line-height: 1;
-  opacity: 0.07;
-  pointer-events: none;
-}
-
-.split-cs {
-  background: linear-gradient(155deg, var(--cs-soft) 0%, #ffffff 72%);
-}
-
-.split-journalism {
-  background: linear-gradient(155deg, var(--jr-soft) 0%, #ffffff 72%);
-}
-
-.split.is-engaged .split-pane {
-  flex-grow: 0.78;
-  opacity: 0.7;
-}
-
-.split .split-pane:hover,
-.split .split-pane:focus-visible {
-  flex-grow: 1.45;
-  opacity: 1;
-  text-decoration: none;
-  box-shadow: 0 18px 34px rgba(31, 41, 55, 0.14);
-}
-
-.split-index {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  color: var(--muted);
-}
-
-.split-title {
-  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-}
-
-.split-cs .split-title {
-  color: var(--cs);
-}
-
-.split-journalism .split-title {
-  color: var(--jr);
-}
-
-.split-desc {
-  color: var(--muted);
-  font-size: 0.95rem;
-  max-width: 36ch;
-}
-
-.split-cue {
-  margin-top: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.split-cue::after {
-  content: "\2193";
-  display: inline-block;
-  margin-left: 0.4em;
-  transition: transform 0.3s ease;
-}
-
-.split-cs .split-cue {
-  color: var(--cs);
-}
-
-.split-journalism .split-cue {
-  color: var(--jr);
-}
-
-.split-pane:hover .split-cue::after {
-  transform: translateY(4px);
 }
 
 /* ---- track sections ---- */
@@ -990,9 +1024,19 @@ header[id] {
     font-size: 0.95rem;
   }
 
-  .hero {
-    min-height: auto;
-    padding-bottom: 3rem;
+  .step {
+    min-height: 88vh;
+    padding: 3rem 0;
+    align-items: flex-end;
+  }
+
+  .hero-hint {
+    display: none;
+  }
+
+  .step-card,
+  .step-journalism .step-inner {
+    max-width: none;
   }
 
   .hero-copy {
@@ -1010,23 +1054,6 @@ header[id] {
     row-gap: 0.4rem;
   }
 
-  .split {
-    flex-direction: column;
-    min-height: 0;
-  }
-
-  .split-pane,
-  .split.is-engaged .split-pane,
-  .split .split-pane:hover {
-    flex: 1 1 auto;
-    opacity: 1;
-    min-height: 210px;
-  }
-
-  .split-pane::before {
-    font-size: 6rem;
-  }
-
   .track {
     padding: 1.4rem 1rem 1.8rem;
   }
@@ -1039,7 +1066,7 @@ header[id] {
 .hero-hint {
   position: absolute;
   right: 1.4rem;
-  bottom: 1.4rem;
+  bottom: 1.2rem;
   z-index: 2;
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;

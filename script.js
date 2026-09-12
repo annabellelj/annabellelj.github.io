@@ -128,3 +128,33 @@ if (year) {
     );
   });
 })();
+
+/* Drive the pinned point cloud from whichever scrollytelling step is
+   centred in the viewport. */
+(function () {
+  const steps = Array.from(document.querySelectorAll(".step[data-step]"));
+  if (steps.length === 0) return;
+
+  function activate(step) {
+    steps.forEach((s) => s.classList.toggle("is-current", s === step));
+    if (window.heroScene) window.heroScene.setMood(step.dataset.step);
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    steps.forEach((s) => s.classList.add("is-current"));
+    return;
+  }
+
+  activate(steps[0]);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) activate(entry.target);
+      });
+    },
+    { threshold: 0, rootMargin: "-45% 0px -45% 0px" }
+  );
+
+  steps.forEach((step) => observer.observe(step));
+})();

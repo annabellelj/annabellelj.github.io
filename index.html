@@ -32,81 +32,84 @@
         </nav>
     </div>
 
-    <header class="hero" id="top">
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-      <div class="hero-content container">
-        <div class="hero-layout">
-          <div class="hero-copy">
-            <p class="eyebrow">Software Engineer • Columbia CS + Journalism</p>
-            <h1>Hi, I'm Annabelle Jiang.</h1>
-            <p class="hero-text">
-              I'm a dual master's student in Computer Science and Journalism at
-              Columbia University. I build thoughtful software and interactive
-              tools, with interests in <u>AI systems</u>, <u>visualization</u>,
-              and <u>immersive storytelling</u>.
-            </p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#work">View Work</a>
-              <a class="btn btn-secondary btn-icon" href="https://github.com/annabellelj" target="_blank" rel="noreferrer">
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                  <path d="M8 0C3.58 0 0 3.67 0 8.2c0 3.63 2.29 6.7 5.47 7.78.4.08.55-.18.55-.4 0-.2-.01-.73-.01-1.43-2.01.38-2.53-.5-2.69-.95-.09-.23-.48-.95-.82-1.14-.28-.15-.68-.52-.01-.53.63-.01 1.08.6 1.23.85.72 1.24 1.87.89 2.33.68.07-.53.28-.89.51-1.09-1.78-.21-3.64-.91-3.64-4.04 0-.89.31-1.62.82-2.19-.08-.21-.36-1.05.08-2.2 0 0 .67-.22 2.2.84a7.42 7.42 0 0 1 4 0c1.53-1.06 2.2-.84 2.2-.84.44 1.15.16 1.99.08 2.2.51.57.82 1.29.82 2.19 0 3.14-1.87 3.83-3.65 4.04.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .22.15.48.55.4A8.21 8.21 0 0 0 16 8.2C16 3.67 12.42 0 8 0Z"></path>
-                </svg>
-                GitHub
-              </a>
-              <a class="btn btn-secondary btn-icon" href="mailto:alj2162@columbia.edu">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2 .5v.4l8 5.3 8-5.3V6h-16Zm16 2.8-7.4 5a1 1 0 0 1-1.2 0L4 8.8v9.7a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5V8.8Z"></path>
-                </svg>
-                Email
-              </a>
-              <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/in/annabellejiang" target="_blank" rel="noreferrer">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.4 20.5h-3.5v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.5V9.2h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.2 2.3 4.2 5.3v6.2ZM5.6 7.7a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM7.3 20.5H3.8V9.2h3.5v11.3ZM22 1H2C1.4 1 1 1.4 1 2v20c0 .6.4 1 1 1h20c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1Z"></path>
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </div>
-          <img class="profile-image" src="profile.jpg" alt="Portrait of Annabelle Jiang" />
-        </div>
+    <div class="scrolly" id="top">
+      <div class="scrolly-visual">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <p class="hero-hint">Move to scatter &middot; drag to tip</p>
       </div>
 
-      <p class="hero-hint">Drag the cloud to rotate</p>
+      <div class="scrolly-steps">
+        <section class="step step-hero" data-step="hero">
+          <div class="step-inner">
+              <div class="hero-copy">
+                <p class="eyebrow">Software Engineer • Columbia CS + Journalism</p>
+                <h1>Hi, I'm Annabelle Jiang.</h1>
+                <p class="hero-text">
+                  I'm a dual master's student in Computer Science and Journalism at
+                  Columbia University. I build thoughtful software and interactive
+                  tools, with interests in <u>AI systems</u>, <u>visualization</u>,
+                  and <u>immersive storytelling</u>.
+                </p>
+                <div class="cta-row">
+                  <a class="btn btn-primary" href="#work">View Work</a>
+                  <a class="btn btn-secondary btn-icon" href="https://github.com/annabellelj" target="_blank" rel="noreferrer">
+                    <svg viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M8 0C3.58 0 0 3.67 0 8.2c0 3.63 2.29 6.7 5.47 7.78.4.08.55-.18.55-.4 0-.2-.01-.73-.01-1.43-2.01.38-2.53-.5-2.69-.95-.09-.23-.48-.95-.82-1.14-.28-.15-.68-.52-.01-.53.63-.01 1.08.6 1.23.85.72 1.24 1.87.89 2.33.68.07-.53.28-.89.51-1.09-1.78-.21-3.64-.91-3.64-4.04 0-.89.31-1.62.82-2.19-.08-.21-.36-1.05.08-2.2 0 0 .67-.22 2.2.84a7.42 7.42 0 0 1 4 0c1.53-1.06 2.2-.84 2.2-.84.44 1.15.16 1.99.08 2.2.51.57.82 1.29.82 2.19 0 3.14-1.87 3.83-3.65 4.04.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .22.15.48.55.4A8.21 8.21 0 0 0 16 8.2C16 3.67 12.42 0 8 0Z"></path>
+                    </svg>
+                    GitHub
+                  </a>
+                  <a class="btn btn-secondary btn-icon" href="mailto:alj2162@columbia.edu">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2 .5v.4l8 5.3 8-5.3V6h-16Zm16 2.8-7.4 5a1 1 0 0 1-1.2 0L4 8.8v9.7a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5V8.8Z"></path>
+                    </svg>
+                    Email
+                  </a>
+                  <a class="btn btn-secondary btn-icon" href="https://www.linkedin.com/in/annabellejiang" target="_blank" rel="noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20.4 20.5h-3.5v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.5V9.2h3.4v1.6h.1c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.2 2.3 4.2 5.3v6.2ZM5.6 7.7a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM7.3 20.5H3.8V9.2h3.5v11.3ZM22 1H2C1.4 1 1 1.4 1 2v20c0 .6.4 1 1 1h20c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1Z"></path>
+                    </svg>
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+          </div>
 
-      <a class="scroll-cue" href="#work" aria-label="Scroll to work">
-        <span></span>
-      </a>
-    </header>
+          <a class="scroll-cue" href="#work" aria-label="Scroll to work">
+            <span></span>
+          </a>
+        </section>
+
+        <section class="step step-cs" data-step="cs" id="work">
+          <div class="step-inner">
+            <div class="step-card">
+              <p class="step-index">01</p>
+              <h2>Computer Science</h2>
+              <p>
+                AI systems, interactive web apps, and product engineering
+                &mdash; software I design, build, and ship end to end.
+              </p>
+              <a class="step-link" href="#cs">See projects</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="step step-journalism" data-step="journalism">
+          <div class="step-inner">
+            <div class="step-card">
+              <p class="step-index">02</p>
+              <h2>Journalism</h2>
+              <p>
+                Reported stories and experiments in how a story can be told,
+                including immersive 3D narratives you scroll through.
+              </p>
+              <a class="step-link" href="#journalism">See stories</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
 
     <main>
-      <section class="section container" id="work">
-        <h2 class="section-title reveal">Two Tracks</h2>
-        <p class="section-lede reveal">
-          I work across two disciplines. Pick a side &mdash; both live on this page.
-        </p>
-
-        <div class="split reveal">
-          <a class="split-pane split-cs" href="#cs" data-watermark="CS">
-            <span class="split-index">01</span>
-            <span class="split-title">Computer&nbsp;Science</span>
-            <span class="split-desc">
-              AI systems, interactive web apps, and product engineering.
-            </span>
-            <span class="split-cue">See projects</span>
-          </a>
-
-          <a class="split-pane split-journalism" href="#journalism" data-watermark="J">
-            <span class="split-index">02</span>
-            <span class="split-title">Journalism</span>
-            <span class="split-desc">
-              Reporting, data-driven stories, and immersive 3D narratives.
-            </span>
-            <span class="split-cue">See stories</span>
-          </a>
-        </div>
-      </section>
-
       <section class="section container track track-cs" id="cs">
         <div class="track-head reveal">
           <p class="track-index">01</p>
@@ -193,11 +196,14 @@
 
       <section class="section container" id="about">
         <h2 class="section-title reveal">About</h2>
-        <p class="reveal">
-          I'm a dual master's student in Computer Science and Journalism at
-          Columbia University. My work focuses on AI systems, visualization, and
-          product engineering for clear, useful storytelling tools.
-        </p>
+        <div class="about-layout reveal">
+          <img class="profile-image" src="profile.jpg" alt="Portrait of Annabelle Jiang" />
+          <p>
+            I'm a dual master's student in Computer Science and Journalism at
+            Columbia University. My work focuses on AI systems, visualization,
+            and product engineering for clear, useful storytelling tools.
+          </p>
+        </div>
       </section>
 
       <section class="section container" id="contact">
