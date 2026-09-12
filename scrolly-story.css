@@ -1,0 +1,96 @@
+/* A continuous story, with characters that stay while the narrative advances. */
+.scrolly-portfolio { --story-tint:226,219,204; background:#fcfaf6; }
+.story-atmosphere { position:fixed; inset:0; pointer-events:none; z-index:-1; background:radial-gradient(ellipse at 78% 42%,rgba(var(--story-tint),.45),transparent 58%),radial-gradient(ellipse at 10% 80%,#e9e8de66,transparent 60%); transition:background 1.2s; }
+.scrolly-portfolio .nav-bar { background:rgba(252,250,246,.48); border-color:#b9a88e22; backdrop-filter:blur(18px); }
+.scrolly-portfolio .nav-links a { font-size:.72rem; font-weight:400; }
+.scrolly-portfolio .hero-section { min-height:125svh; align-items:start; padding-top:9svh; padding-bottom:10svh; }
+.scrolly-portfolio .hero-section>.editorial-copy { position:sticky; top:22svh; padding-bottom:7vh; }
+.scrolly-portfolio h1 { font-size:clamp(4rem,7.6vw,7.6rem); font-weight:400; }
+.scrolly-portfolio h1 span { font-family:Georgia,serif; font-style:italic; font-weight:400; letter-spacing:-.065em; }
+.scrolly-portfolio .hero-role { font-size:1.1rem; font-weight:400; }
+.scrolly-portfolio .intro { font-size:.93rem; max-width:420px; }
+.scrolly-portfolio .btn-primary { background:transparent; color:#514333; border:0; border-bottom:1px solid #8a745355; border-radius:0; padding:12px 0; }
+.scrolly-portfolio .btn-primary:hover { background:transparent; border-color:#8a7453; }
+.scrolly-portfolio .hero-film { position:sticky; top:12svh; width:100%; align-self:start; }
+.keyed-video { position:relative; height:68svh; max-height:700px; width:100%; }
+.keyed-video canvas,.keyed-video .film-fallback { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.keyed-video canvas { opacity:0; transition:opacity .35s; }
+.keyed-video.is-ready canvas { opacity:1; }
+.keyed-video.is-ready .film-fallback { opacity:0; }
+.keyed-video .film-fallback { mix-blend-mode:multiply; mask-image:radial-gradient(ellipse,#000 56%,transparent 76%); }
+.hero-film figcaption { text-align:center; width:100%; }
+.film-note { display:block; margin-bottom:12px; }
+.film-controls { display:flex; justify-content:center; gap:20px; }
+.film-controls button { padding:5px 0; background:none; border:0; border-bottom:1px solid #af9a7955; font:inherit; color:#766149; cursor:pointer; }
+.film-controls button:hover { color:#352a21; border-color:currentColor; }
+.film-controls button:focus-visible { outline:2px solid #8a664c; outline-offset:5px; }
+.scrolly-portfolio .story-bridge { display:block; border:0; padding:16vh 7vw 23vh; }
+.story-bridge .bridge-overline { font:400 .65rem 'IBM Plex Mono',monospace; letter-spacing:.1em; }
+.story-bridge p { font:400 clamp(4rem,10vw,10rem)/1.06 'Space Grotesk',sans-serif; letter-spacing:-.06em; color:#514738; margin:50px 0; }
+.story-bridge p em { font-family:Georgia,serif; color:#a48a6b; font-weight:400; }
+.scrolly-portfolio .chapter { position:relative; background:transparent; padding:12svh 0 20svh; }
+.scrolly-portfolio .chapter::before { content:attr(data-number); position:absolute; top:4vh; right:4vw; font:400 clamp(10rem,30vw,28rem)/1 Georgia,serif; color:rgba(137,117,90,.055); pointer-events:none; }
+.scrolly-portfolio .chapter>.editorial { align-items:start; }
+.scrolly-portfolio .chapter .character { position:sticky; top:14svh; align-self:start; padding-top:2vh; }
+.scrolly-portfolio .chapter .character img { height:62svh; max-height:650px; opacity:.96; }
+.scrolly-portfolio .chapter .editorial-copy { min-height:130svh; padding-top:14svh; }
+.scrolly-portfolio .chapter .selected-work { margin-top:35svh; padding:28px 0 20px; border-top:1px solid #9d897344; }
+.scrolly-portfolio .selected-work .work-label { margin-bottom:30px; }
+.scrolly-portfolio h2 { font-size:clamp(3rem,5.6vw,5.6rem); font-weight:400; }
+.scrolly-portfolio .section-intro { font:italic 1.45rem/1.5 Georgia,serif; color:#756047; }
+.scrolly-portfolio .section-description { max-width:420px; font-size:.93rem; }
+.scrolly-portfolio .work-card { border-top:0; }
+.scrolly-portfolio .character-message { background:rgba(255,253,248,.68); backdrop-filter:blur(14px); border-color:#af967e33; box-shadow:none; }
+.scrolly-portfolio .chapter-about .editorial-copy { min-height:85svh; }
+.scrolly-portfolio .chapter-about .section-description:last-of-type { margin-top:10vh; }
+.scrolly-portfolio .contact-section { border-top:1px solid #9d897333; padding:18vh 0; }
+.story-position { position:fixed; left:18px; top:50%; z-index:20; display:flex; flex-direction:column; align-items:center; gap:14px; color:#988875; font:400 9px 'IBM Plex Mono',monospace; pointer-events:none; }
+#story-chapter { writing-mode:vertical-rl; transform:rotate(180deg); letter-spacing:.1em; }
+.story-position-line { display:block; width:1px; height:80px; background:#9d897333; }
+.story-position-line i { display:block; height:100%; background:#9d8973; transform:scaleY(0); transform-origin:top; }
+#story-number { font-size:8px; }
+@media(max-width:900px){ .story-position{display:none} .scrolly-portfolio .chapter>.editorial { gap:35px; } }
+@media(max-width:650px){
+ .scrolly-portfolio .hero-section { min-height:0; display:flex; flex-direction:column; padding:6vh 0 10vh; gap:24px; }
+ .scrolly-portfolio .hero-section>.editorial-copy,.scrolly-portfolio .hero-film { position:relative; top:auto; padding:0; }
+ .scrolly-portfolio h1 { font-size:4.8rem; }
+ .keyed-video { height:57svh; min-height:330px; }
+ .scrolly-portfolio .story-bridge { padding:12vh 0 16vh; }
+ .story-bridge p { font-size:5.5rem; }
+ .scrolly-portfolio .chapter { padding:8vh 0 12vh; }
+ .scrolly-portfolio .chapter>.editorial { display:flex; flex-direction:column; gap:36px; }
+ .scrolly-portfolio .chapter .editorial-copy { min-height:0; padding-top:0; order:1; width:100%; }
+ .scrolly-portfolio .chapter .character { position:relative; top:auto; width:100%; order:2; }
+ .scrolly-portfolio .chapter .character img { height:48svh; min-height:300px; }
+ .scrolly-portfolio .chapter .selected-work { margin-top:10vh; }
+ .scrolly-portfolio h2 { font-size:3.6rem; }
+ .scrolly-portfolio .chapter-about .editorial-copy { min-height:0; }
+ .scrolly-portfolio .contact-section { padding:10vh 0; }
+}
+@media(prefers-reduced-motion:reduce){
+ .scrolly-portfolio .hero-section { min-height:90vh; }
+ .scrolly-portfolio .hero-section>.editorial-copy,.scrolly-portfolio .hero-film,.scrolly-portfolio .chapter .character { position:relative; top:auto; }
+ .scrolly-portfolio .chapter .editorial-copy { min-height:0; }
+ .scrolly-portfolio .chapter .selected-work { margin-top:60px; }
+ .story-atmosphere { transition:none; }
+}
+
+
+/* The greeting is a normal first screen, without pinning or scroll-driven motion. */
+.scrolly-portfolio .hero-section { min-height:calc(100svh - 72px); align-items:center; padding:6vh 0 8vh; }
+.scrolly-portfolio .hero-section>.editorial-copy,.scrolly-portfolio .hero-film { position:relative; top:auto; padding:0; align-self:center; }
+.scrolly-portfolio .hero-film { pointer-events:none; }
+.scrolly-portfolio .keyed-video { height:min(68svh,660px); }
+.scrolly-portfolio .story-bridge { padding:8vh 0 12vh; }
+.scrolly-portfolio .story-bridge p { font-size:clamp(3rem,6vw,6rem); margin:28px 0; }
+.scrolly-portfolio .chapter .editorial-copy { min-height:65svh; padding-top:8vh; }
+.collection-entry { margin-top:40px; }
+.collection-entry p { font:400 .65rem/1.8 'IBM Plex Mono',monospace; color:#8b7a67; }
+.collection-link { display:inline-flex; align-items:center; gap:28px; border-bottom:1px solid #9b826766; padding:12px 0; font-size:.95rem; color:#5b4937; }
+.collection-link:hover { text-decoration:none; border-color:#5b4937; }
+.collection-link span { transition:transform .25s; }.collection-link:hover span { transform:translate(3px,-3px); }
+.point-name { position:relative; display:inline-block; }
+.scrolly-portfolio h1 .point-name>span { font:inherit; color:inherit; }
+.point-name canvas { position:absolute; inset:0; width:100%; height:100%; pointer-events:auto; }
+.point-name.is-ready>span { opacity:0; }
+@media(max-width:650px){.scrolly-portfolio .hero-section{min-height:0;gap:28px}.scrolly-portfolio .keyed-video{height:52svh;min-height:320px}.scrolly-portfolio .chapter .editorial-copy{min-height:0;padding-top:0}.scrolly-portfolio .story-bridge p{font-size:3.8rem}}

@@ -1,0 +1,121 @@
+/* The same Annabelle leads each chapter; artwork sits directly on the page. */
+.character-portfolio { --text:#302b29; --muted:#716965; --accent-2:#6d5141; --bg:#faf8f4; background:var(--bg); color:var(--text); }
+.character-portfolio .container,.character-portfolio .nav { width:min(1160px, calc(100% - 96px)); }
+.character-portfolio .nav-bar { position:sticky; top:0; z-index:30; background:rgba(250,248,244,.95); border-bottom:1px solid #e6dfd6; backdrop-filter:blur(16px); }
+.character-portfolio .nav { padding:20px 0; }
+.character-portfolio .logo { letter-spacing:-.04em; font-size:1.15rem; }
+.logo-dot { color:#a98060; }
+.character-portfolio .nav-links { gap:24px; }
+.character-portfolio .nav-links a { font-size:.8rem; font-weight:500; }
+.character-portfolio .nav-links a.is-active { color:#825a40; text-decoration:underline; text-underline-offset:7px; }
+.editorial { display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:center; }
+.hero-section { min-height: min(820px, calc(100svh - 72px)); padding:54px 0 44px; }
+.character-portfolio .eyebrow { font:500 .68rem/1.5 'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; color:#7f6250; margin:0 0 22px; }
+.character-portfolio h1 { font-size:clamp(4rem,6.7vw,6.4rem); line-height:1.04; font-weight:500; letter-spacing:-.07em; margin:0 0 28px; }
+.character-portfolio h1 span { color:#8a664c; }
+.hero-role { font-size:clamp(1rem,1.5vw,1.4rem); font-weight:500; letter-spacing:-.025em; margin:0 0 22px; }
+.hero-role span { color:#b28e73; padding:0 7px; }
+.intro,.section-description { color:var(--muted); font-size:1rem; line-height:1.85; max-width:490px; }
+.character-portfolio .cta-row { align-items:center; gap:28px; margin:30px 0; flex-wrap:wrap; }
+.character-portfolio .btn-primary { background:#3c3832; color:#fffdf8; border:1px solid #3c3832; border-radius:5px; padding:13px 22px; font-size:.84rem; box-shadow:none; }
+.character-portfolio .btn-primary:hover { background:#655140; transform:translateY(-2px); }
+.character-portfolio .btn-primary span { margin-left:18px; }
+.text-link { font-size:.86rem; color:var(--text); text-decoration:underline; text-underline-offset:5px; }
+.hero-footnote { font:400 .64rem 'IBM Plex Mono',monospace; color:#847b72; margin:48px 0 0; }
+.hero-footnote span { padding:0 10px; }
+.character { margin:0; display:flex; align-items:center; flex-direction:column; align-self:center; min-width:0; }
+.character img { display:block; width:100%; height:590px; object-fit:contain; filter:drop-shadow(0 18px 20px rgba(68,43,26,.07)); }
+.character figcaption { margin-top:16px; font:400 .64rem 'IBM Plex Mono',monospace; letter-spacing:.04em; color:#877970; }
+.character-hello img { height:min(590px,66svh); }
+.chapter-line { display:flex; justify-content:space-between; gap:24px; border-top:1px solid #dcd4cb; padding:24px 0; color:#7f746b; font:400 .67rem/1.6 'IBM Plex Mono',monospace; scroll-margin-top:100px; }
+.chapter { padding:100px 0; scroll-margin-top:72px; }
+.chapter-cs { background:#f0f2ed; }
+.chapter-journalism { background:#fbf3ef; }
+.chapter-creative { background:#edf1f5; }
+.chapter-about { background:#faf8f4; }
+.character-left { grid-template-columns:1fr 1.1fr; }
+.character-portfolio h2 { font-size:clamp(2.6rem,4.2vw,4rem); font-weight:500; letter-spacing:-.055em; line-height:1.12; margin:0 0 24px; }
+.accent-mark { color:#a08064; }
+.section-intro { font-size:1.15rem; letter-spacing:-.025em; margin:0 0 12px; }
+.section-description { margin:0 0 24px; }
+.selected-work { margin-top:35px; }
+.work-label { font:500 .63rem 'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.12em; color:#7c756e; margin-bottom:12px; }
+.character-portfolio .work-card { display:block; border:0; border-top:1px solid #d5d4ca; border-radius:0; background:none; box-shadow:none; padding:20px 0; transform:none; }
+.character-portfolio .work-card:last-child { padding-bottom:0; }
+.character-portfolio .work-card .group-kicker { color:#7a7169; font-size:.62rem; margin:0 0 5px; }
+.character-portfolio .work-card h3 { font-size:1.2rem; line-height:1.4; letter-spacing:-.02em; margin:0 0 9px; }
+.character-portfolio .work-card p:not(.group-kicker):not(.stack) { font-size:.86rem; color:var(--muted); line-height:1.7; margin:0 0 10px; }
+.character-portfolio .work-title-link { color:var(--text); }
+.character-portfolio .work-card .stack { font-size:.63rem; color:#7f746a; margin:12px 0; }
+.character-portfolio .card-links { gap:22px; margin:10px 0 0; }
+.character-portfolio .card-links a { font-size:.76rem; color:#624c3e; text-decoration:underline; text-underline-offset:4px; }
+.character-portfolio .card-image { display:none; }
+.character-about img { height:460px; }
+.contact-section { padding:70px 0 90px; border-top:1px solid #ddd4c9; scroll-margin-top:100px; }
+.character-portfolio .contact-section h2 { font-size:clamp(1.8rem,3vw,2.8rem); }
+.contact-email { font-size:clamp(3rem,6vw,5.5rem); letter-spacing:-.06em; color:#8a664c; }
+.contact-email span { display:inline-block; margin-left:24px; }
+.social-links { display:flex; flex-wrap:wrap; gap:28px; margin-top:30px; font-size:.8rem; }
+.character-portfolio .footer { display:flex; justify-content:space-between; border-top:1px solid #ddd4c9; padding:24px 0; font-size:.68rem; color:#84776c; }
+.character-portfolio .footer p { margin:0; }
+.skip-link { position:fixed; top:-100px; left:12px; z-index:100; background:#302b29; color:white; padding:12px; }
+.skip-link:focus { top:12px; }
+.character-portfolio a:focus-visible { outline:2px solid #8a664c; outline-offset:5px; }
+@media(min-width:1500px) { .hero-section { min-height:800px; } }
+@media(max-width:900px) { .character-portfolio .container,.character-portfolio .nav { width:calc(100% - 48px); } .editorial { gap:28px; } .character img { height:470px; } .character-portfolio .nav-links { gap:15px; } .hero-section { min-height:680px; } .chapter { padding:72px 0; } .hero-role { line-height:1.7; } }
+@media(max-width:650px) { .character-portfolio .container,.character-portfolio .nav { width:calc(100% - 40px); } .character-portfolio .nav { flex-wrap:wrap; gap:12px; padding:16px 0; } .character-portfolio .nav-links { width:100%; justify-content:space-between; gap:8px; } .character-portfolio .nav-links a { font-size:.66rem; } .editorial,.character-left { grid-template-columns:1fr; gap:34px; } .hero-section { padding-top:46px; min-height:0; gap:20px; } .character-portfolio h1 { font-size:4.5rem; } .hero-role { font-size:1.05rem; } .hero-footnote { margin-top:26px; } .character img,.character-hello img { height:420px; } .character figcaption { margin-top:8px; } .chapter-line { font-size:.58rem; flex-direction:column; gap:8px; } .chapter { padding:52px 0; scroll-margin-top:108px; } .chapter .editorial-copy { grid-row:1; } .chapter .character { grid-row:2; } .character-portfolio h2 { font-size:3rem; } .chapter-about .character img { height:350px; } .contact-section { padding:50px 0; } .character-portfolio .footer { gap:20px; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .character-portfolio * { transition:none!important; animation:none!important; } }
+.character-portfolio .card-links a { padding:0; border:0; border-radius:0; background:none; box-shadow:none; }
+.character-portfolio #top { scroll-margin-top:100px; }
+.character-portfolio .card.work-card:hover { background:none; box-shadow:none; transform:none; border-color:#d5d4ca; }
+
+/* Image-led interactions. Figures remain part of the editorial composition. */
+.character[data-character] { position:relative; }
+.character-trigger { display:block; position:relative; width:100%; padding:0 0 30px; margin:0; border:0; background:none; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.character-trigger img { transform:translateY(var(--lift,0px)) rotate(var(--lean,0deg)); transform-origin:50% 95%; transition:transform .45s ease,filter .3s ease; }
+.character-trigger:hover img { filter:drop-shadow(0 20px 24px rgba(68,43,26,.12)); }
+.character-trigger:focus-visible { outline:2px dashed #9d8064; outline-offset:8px; border-radius:8px; }
+.character-hint { position:absolute; bottom:0; left:0; width:100%; font:400 .65rem/1.5 'IBM Plex Mono',monospace; color:#776451; text-decoration:underline; text-underline-offset:5px; }
+.character-message { position:absolute; top:9%; right:0; max-width:min(265px,80%); padding:16px 21px; border:1px solid #e5dccf; border-radius:18px 18px 18px 3px; background:#fffdf8; box-shadow:0 10px 30px #5541260d; font-size:.9rem; line-height:1.55; color:#5e4836; opacity:0; transform:translateY(8px); transition:opacity .2s,transform .2s; pointer-events:none; white-space:pre-line; z-index:3; }
+.character-message.is-open { opacity:1; transform:translateY(0); }
+[data-character="coding"] .character-message { font-family:'IBM Plex Mono',monospace; font-size:.75rem; }
+[data-character="creative"] .character-trigger::after { content:''; position:absolute; inset:12% 14% 17%; border:1px solid #9e8466; border-radius:24px; opacity:0; transition:opacity .3s; pointer-events:none; }
+[data-character="creative"].is-framing .character-trigger::after { opacity:.65; }
+[data-character="creative"].is-captured .character-hint { color:#53745a; }
+.will-enter { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s ease; }
+.will-enter.has-entered { opacity:1; transform:none; }
+.character-portfolio .work-title-link { background-image:linear-gradient(#ac8b6d,#ac8b6d); background-repeat:no-repeat; background-position:0 100%; background-size:0 1px; transition:background-size .25s ease; }
+.character-portfolio .work-title-link:hover,.character-portfolio .work-title-link:focus-visible { background-size:100% 1px; text-decoration:none; }
+.copy-email { background:none; color:#6d5141; border:0; padding:0; font:inherit; cursor:pointer; text-decoration:underline; text-underline-offset:4px; }
+.copy-email:focus-visible { outline:2px solid #8a664c; outline-offset:5px; }
+.copy-feedback { display:block; min-height:1.6em; margin-top:12px; font-size:.8rem; color:#6d5141; }
+@media(max-width:650px){ .character-message { right:0; top:6%; font-size:.8rem; max-width:220px; } }
+@media(prefers-reduced-motion:reduce){ .will-enter { opacity:1; transform:none; } .character-trigger img { transform:none!important; } }
+/* The approved grounded reference has a studio backdrop; blend its edges into the page. */
+[data-character="hello"] .character-trigger,[data-character="about"] .character-trigger { mix-blend-mode:multiply; }
+[data-character="hello"] img,[data-character="about"] img { mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent); mask-composite:intersect; }
+[data-character="hello"] img,[data-character="about"] img { width:auto; max-width:100%; margin-inline:auto; }
+
+/* Small native cursors: no tracking overlay or animation loop. */
+@media (hover:hover) and (pointer:fine) {
+  .character-portfolio #cs { --chapter-cursor:url("media/cursors/mouse.svg") 20 5, auto; --chapter-action-cursor:url("media/cursors/mouse-active.svg") 20 5, pointer; }
+  .character-portfolio #journalism { --chapter-cursor:url("media/cursors/pen.svg") 5 35, auto; --chapter-action-cursor:url("media/cursors/pen-active.svg") 5 35, pointer; }
+  .character-portfolio #creative { --chapter-cursor:url("media/cursors/camera.svg") 21 23, auto; --chapter-action-cursor:url("media/cursors/camera-active.svg") 21 23, pointer; }
+  .character-portfolio :is(#cs,#journalism,#creative),
+  .character-portfolio :is(#cs,#journalism,#creative) * { cursor:var(--chapter-cursor); }
+  .character-portfolio :is(#cs,#journalism,#creative) :is(a,button),
+  .character-portfolio :is(#cs,#journalism,#creative) :is(a,button) * { cursor:var(--chapter-action-cursor); }
+}
+@media (forced-colors:active) {
+  .character-portfolio :is(#cs,#journalism,#creative) { --chapter-cursor:auto; --chapter-action-cursor:pointer; }
+}
+
+/* Reserve a separate line for dialogue, away from the character's face. */
+.character-portfolio .character .character-message{position:relative;top:auto;right:auto;max-width:100%;width:fit-content;margin:10px auto 0;min-height:44px;display:none;transform:none;border-radius:14px;font-size:13px}
+.character-portfolio .character .character-message.is-open{display:block}
+.character-trigger:active img{transform:translateY(-5px) rotate(-2deg)}
+.model-figure .character-trigger{height:clamp(360px,60vh,650px);padding:0;touch-action:pan-y;overflow:hidden}
+.model-figure .character-trigger img{height:100%;object-fit:contain}
+.model-ready .character-trigger>img{visibility:hidden}
+.journalism-model-canvas{position:absolute;inset:0;width:100%;height:100%;outline-offset:-4px;touch-action:pan-y}
+.model-status{display:block;text-align:center;font:10px/1.6 'IBM Plex Mono',monospace;color:#816d55;margin:12px 0}

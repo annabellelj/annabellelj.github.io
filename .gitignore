@@ -1,1 +1,10 @@
 .claude/
+
+# Large character assets kept local for the /3d-test prototype.
+# 94MB + 75MB GLBs would permanently bloat this Pages repo — decide on
+# hosting/optimisation before committing them.
+media/*.glb
+media/*.mp4
+
+# macOS metadata
+.DS_Store
