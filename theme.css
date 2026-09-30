@@ -1,0 +1,13 @@
+/* One palette for the whole site: warm paper, brown ink, a single accent. */
+:root{
+  --paper:#fcfaf6;
+  --surface:#fffdf9;
+  --tint:#f1e9de;
+  --line:#e3d8ca;
+  --line-strong:#cdbba5;
+  --muted:#968370;
+  --text-2:#6f6253;
+  --ink:#302b29;
+  --accent:#8a664c;
+  --accent-deep:#6d5141;
+}

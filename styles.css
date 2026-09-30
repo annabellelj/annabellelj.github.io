@@ -1,23 +1,23 @@
 :root {
-  --bg: #ffffff;
+  --bg: var(--paper);
   --surface: rgba(255, 255, 255, 0.88);
-  --text: #1f2937;
-  --muted: #4b5563;
+  --text: var(--ink);
+  --muted: var(--text-2);
 
   /* baby blue */
-  --blue: #a5d8f3;
-  --blue-soft: #e9f4fc;
-  --blue-deep: #3c7da6;
+  --blue: var(--line-strong);
+  --blue-soft: var(--tint);
+  --blue-deep: var(--accent);
 
   /* pink */
-  --pink: #f9bcd0;
-  --pink-soft: #fdeef4;
-  --pink-deep: #c4587e;
+  --pink: var(--line-strong);
+  --pink-soft: var(--tint);
+  --pink-deep: var(--accent);
 
-  --accent: var(--blue);
+  --accent-1: var(--blue);
   --accent-2: var(--blue-deep);
   --accent-soft: var(--blue-soft);
-  --border: #d6dde5;
+  --border: var(--line);
   --shadow: 0 10px 22px rgba(31, 41, 55, 0.08);
   --radius: 10px;
 }
@@ -49,7 +49,7 @@ a:hover {
 }
 
 u {
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--accent-1);
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
@@ -226,7 +226,7 @@ h1 {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--accent-1);
   color: #0b1220;
   box-shadow: var(--shadow);
 }
@@ -272,7 +272,7 @@ h1 {
   letter-spacing: -0.01em;
   text-wrap: balance;
   display: inline-block;
-  border-bottom: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent-1);
   padding-bottom: 0.15rem;
 }
 
@@ -311,7 +311,7 @@ h1 {
 }
 
 .project-tab.active {
-  background: var(--accent);
+  background: var(--accent-1);
   border-color: #d9d9d9;
 }
 
@@ -436,7 +436,7 @@ h1 {
 
 .card-links a:hover {
   border-color: #d9d9d9;
-  background: var(--accent);
+  background: var(--accent-1);
   color: #0b1220;
   text-decoration: none;
 }
@@ -603,7 +603,7 @@ header[id] {
   width: 100%;
   transform: scaleX(0);
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, var(--cs), var(--accent), var(--jr));
+  background: linear-gradient(90deg, var(--cs), var(--accent-1), var(--jr));
 }
 
 .nav-bar {
@@ -633,7 +633,7 @@ header[id] {
   bottom: -2px;
   height: 2px;
   border-radius: 2px;
-  background: var(--accent);
+  background: var(--accent-1);
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform 0.28s ease;
@@ -847,7 +847,7 @@ header[id] {
 }
 
 .scroll-cue:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-1);
   text-decoration: none;
 }
 
@@ -896,7 +896,7 @@ header[id] {
 }
 
 .track-head {
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--accent-1);
   padding-left: 1rem;
   margin-bottom: 1.4rem;
 }
