@@ -67,6 +67,10 @@
 .story-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;margin-bottom:20px;text-decoration:none;background:var(--tint)}
 .story-visual img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .story-card:hover .story-visual img{transform:scale(1.03)}
+.story-visual--map{background:#ddd}
+.story-visual--snow{background:#060e16}
+.story-visual--map img{object-fit:contain}
+.story-card:hover .story-visual--map img{transform:none}
 
 .story-card h3{font:italic 400 clamp(23px,2.3vw,28px)/1.25 Georgia,serif;letter-spacing:-.02em;margin:12px 0 10px}
 .story-card details{margin:0 12px 6px}
